@@ -892,7 +892,7 @@ while(tmps){
    }
 printf("\n");
 }
-#endif DBG_OBJT
+#endif
 
 
 void
@@ -955,11 +955,11 @@ int runnum, runtyp, type, msksiz, *msktyp, *masktype();
 STRS **chart(), **mskcht, **runcht, **strs2ptr(), *isolate(),
      ***mskidx = objt->msk;
 mskcht = chart(strs,&msksiz);
-if(!mskcht) return NULL;
+if(!mskcht) return 0;
 msktyp = masktype(mskcht,msksiz);
 if(!goodidx(mskcht)){
    err_prnt("undefined operation on index element");
-   return NULL;
+   return 0;
    }
 if((msktyp[0]==objt->typ[0]&&msktyp[1]==objt->typ[1])){
    for(runnum=type=0;type<2;type++){
@@ -983,7 +983,7 @@ else if((msktyp[0]>0&&objt->typ[0]==0&&msktyp[1]==0&&objt->typ[1]>0)){
    }
 else{
    err_prnt("incorrect index mask for referred object");
-   return NULL;
+   return 0;
    }
 return 1;
 }
@@ -992,7 +992,7 @@ int goodidx(mskcht)
 STRS **mskcht;
 {
 while(!isrgt(*(*mskcht)->str))
-   if(!isarg((*mskcht++)->nextstr)) return NULL;
+   if(!isarg((*mskcht++)->nextstr)) return 0;
 return 1;
 }
 
@@ -1198,7 +1198,7 @@ OBJT *objt;
 STRS *clrstrs();
 int type, runt, **clrsym();
 if(objt->cht) free(objt->cht);
-objt->cht = NULL;
+objt->cht = 0;
 for(type=0;type<2;type++){
    if(objt->msk)
       for(runt=0;runt<objt->typ[type];runt++)
@@ -1210,7 +1210,7 @@ for(type=0;type<2;type++){
    if(objt->msk[type]) free(objt->msk[type]);
    }
 if(objt->sym) free(clrsym(objt->sym)), objt->sym = (int**) NULL;
-objt->typ[0] = objt->typ[1] = objt->siz = objt->pos = NULL;
+objt->typ[0] = objt->typ[1] = objt->siz = objt->pos = 0;
 return objt;
 }
 
