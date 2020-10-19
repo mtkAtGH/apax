@@ -11,7 +11,6 @@ static char SccsId[] = "@(#) util.c 1.5 93/02/17 (c)MTK";
 #include <fixr.h>
 #include <help.h>
 
-
 extern NAMS *nams, *hist, *trace;
 extern FILE *infile, *outfile;
 extern STRG *instrg;
@@ -35,7 +34,7 @@ return !chr||*str ? str : (int*) 0;
 }
 
 
-istrln(str)
+int istrln(str)
 int *str;
 {
 int num = 0;
@@ -44,17 +43,17 @@ return num;
 }
 
 
-adigit(num) int num; {return num>='0'&&num<='9';}
+int adigit(num) int num; {return num>='0'&&num<='9';}
 
-alower(let) int let;
+int alower(let) int let;
 {return (let>='a'&&let<='i')||(let>='j'&&let<='r')||(let>='s'&&let<='z');}
 
-anupper(let) int let;
+int anupper(let) int let;
 {return (let>='A'&&let<='I')||(let>='J'&&let<='R')||(let>='S'&&let<='Z');}
 
-analpha(let) int let; {return alower(let)||anupper(let);}
+int analpha(let) int let; {return alower(let)||anupper(let);}
 
-analnum(chr) int chr; {return analpha(chr)||adigit(chr);}
+int analnum(chr) int chr; {return analpha(chr)||adigit(chr);}
 
 
 void
@@ -208,7 +207,7 @@ free(clrchrs(chrs));
 return slen;
 }
 
-kbd_strent(str)
+int kbd_strent(str)
 int **str;
 {
 int c, slen;
