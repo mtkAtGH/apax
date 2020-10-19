@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdlib.h>
+
 
 #define FNCS  4
 #define ZERO  "0"
