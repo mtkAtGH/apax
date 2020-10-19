@@ -148,6 +148,11 @@ STRG *srewind(STRG *strg);
 
 void free(void*);
 
-void *calloc(int, int);
+/* 
+ * Calloc prototype now drawn from <stdlib.h> to silence  gcc warnings
+ *
+  void *calloc(int, int
+ * 
+ *  */   
 
 void exit( int exit_status);
