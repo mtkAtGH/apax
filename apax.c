@@ -107,7 +107,7 @@ return start;
 
 int precision()
 {
-int *inttos(), *cpystr(), *sqrt(), *integer(), *clrstr(), twoint = 2;
+int *inttos(), *cpystr(), *integer(), *clrstr(), twoint = 2;
 float flt = 3.0;
 double dbl = 3.0;
 radix = 10;
@@ -184,17 +184,17 @@ if(!infile||!instrg) outfile ? fprintf(outfile,"active precedence rule = %d  (%s
       printf("active precedence rule = %d  (%s)\n",option[1],rules[option[1]]);
 }
 
-isint(c) int c;{return c>='0';}
+int isint(c) int c;{return c>='0';}
 
-isprtarg(c) int c;{return analnum(c)||c==(int)tag||c==(int)'.';}
+int isprtarg(c) int c;{return analnum(c)||c==(int)tag||c==(int)'.';}
 
-isprtopr(c) int c;{
+int isprtopr(c) int c;{
 return
 c==(int)'^'||c==(int)','||c==(int)':'||c==(int)';'||
 c==(int)'|'||c==(int)BEG||c==(int)END||c==(int)'-'||c==(int)'+'||
 c==(int)'*'||c==(int)'/'||c==(int)'%'||c==(int)'='||c==(int)'!';}
 
-isopr(c) int c;{
+int isopr(c) int c;{
 char *val = ('0'==48)? oprn_ascii : oprn_ebcdic;
 int idx = 0;while(*++val&&++idx!=c);return (int) *val;}
 
@@ -203,81 +203,81 @@ setopr(c) int *c;{
 char *val = ('0'==48)? oprn_ascii : oprn_ebcdic;
 int idx = 0;while(++idx,*++val) if(*val==*c){*c=idx;break;}}
 
-isopr_dm(c) int c;{return c>2&&c<6;}
+int isopr_dm(c) int c;{return c>2&&c<6;}
 
-isopr_d(c) int c;{return c>3&&c<6;}
+int isopr_d(c) int c;{return c>3&&c<6;}
 
-isopr_m(c) int c;{return c==3;}
+int isopr_m(c) int c;{return c==3;}
 
-isopr_as(c) int c;{return c>=1&&c<3;}
+int isopr_as(c) int c;{return c>=1&&c<3;}
 
-isopr_a(c) int c;{return c==1;}
+int isopr_a(c) int c;{return c==1;}
 
-isopr_s(c) int c;{return c==2;}
+int isopr_s(c) int c;{return c==2;}
 
-isfct(c) int c;{return c==9;}
+int isfct(c) int c;{return c==9;}
 
-isclx(c) int c;{return c==6;}
+int isclx(c) int c;{return c==6;}
 
-isasgn(c) int c;{return c==8;}
+int isasgn(c) int c;{return c==8;}
 
-isobj(c) int c;{return c==10||c==12;}
+int isobj(c) int c;{return c==10||c==12;}
 
-islft(c) int c;{return c==10;}
+int islft(c) int c;{return c==10;}
 
-isrgt(c) int c;{return c==12;}
+int isrgt(c) int c;{return c==12;}
 
-ishft(c) int c;{return c==7;}
+int ishft(c) int c;{return c==7;}
 
-isnorm(c) int c;{return c==13;}
+int isnorm(c) int c;{return c==13;}
 
-iscol(c) int c;{return c==11;}
+int iscol(c) int c;{return c==11;}
 
-isrow(c) int c;{return c==14;}
+int isrow(c) int c;{return c==14;}
 
-issep(c) int c;{return c==11||c==14;}
+int issep(c) int c;{return c==11||c==14;}
 
-istrps(c) int c;{return c==15;}
+int istrps(c) int c;{return c==15;}
 
-isdirs(c) int c;{return c==16;}
+int isdirs(c) int c;{return c==16;}
 
-isdirp(c) int c;{return c==17;}
+int isdirp(c) int c;{return c==17;}
 
-isbill(c) int c;{return c==18;}
+int isbill(c) int c;{return c==18;}
 
-isbilr(c) int c;{return c==19;}
+int isbilr(c) int c;{return c==19;}
 
-ismrk(c) int c; {return issep(c)||isclx(c)||isnorm(c)||isobj(c);}
+int ismrk(c) int c; {return issep(c)||isclx(c)||isnorm(c)||isobj(c);}
 
-isxpr(c) int c;{return c==(int)'('||c==(int)')';}
+int isxpr(c) int c;{return c==(int)'('||c==(int)')';}
 
-isnot(c) int c;{return !isprtarg(c)&&!isprtopr(c)&&!isxpr(c);}
+int isnot(c) int c;{return !isprtarg(c)&&!isprtopr(c)&&!isxpr(c);}
 
-diftyp(new,old) int new, old;{
+int diftyp(new,old) int new, old;{
 return isprtarg(new)&&isopr(old)||isopr(new)||isxpr(new)||isasgn(new);}
 
-isnam(strs) STRS *strs;{int c; if(strs->str) c = *strs->str; else return 0;
+int isnam(strs) STRS *strs;{int c; if(strs->str) c = *strs->str; else return 0;
 if(strs->form!=1) return analpha(c)||c==(int)tag;else return 0;}
 
-isarg(strs) STRS *strs;{if(!strs) return 0;
+int isarg(strs) STRS *strs;{if(!strs) return 0;
 if(strs->str&&(isopr(*strs->str)||isxpr(*strs->str))) return 0;
 else if(radix!=10) return isint(*strs->str)||*strs->str=='.';
 else if(strs->form!=1) return isnam(strs)||isdcml(strs->str);
 else return isfctl(strs->str);}
 
-isfctl(str) int *str;{int *run=str, *ptadrs(), *pt = ptadrs(str);
+int isfctl(str) int *str;{int *run=str, *ptadrs(), *pt = ptadrs(str);
 int pos = (int)(pt-str);for(run--;++run<pt;) if(*run<'0'||*run-'0'>pos--){
 fprintf(stderr,"bad value %d at position %d ",*run-'0',pos+1); return 0;}
 if(*run) while(*++run) if(*run<'0'||*run-'0'>-(--pos)){
 fprintf(stderr,"bad value %d at position %d ",*run-'0',pos+1); return 0;}
 return 1;}
 
-isdcml(str) int *str;{if(!str) return 0;
+int isdcml(str) int *str;{if(!str) return 0;
 for(str--;*++str;) if(!adigit(*str)&&*str!='.')return 0;return 1;}
 
-isnum(strs) STRS *strs;{return isarg(strs)&&!isnam(strs);}
+int isnum(strs) STRS *strs;{return isarg(strs)&&!isnam(strs);}
 
-illarg(strs) STRS *strs;{int *arg = strs->str;
+int illarg(strs) STRS *strs;{int *arg = strs->str;
 if(isopr(*arg)||isnam(strs)) return 0;
 while(*++arg){ if(analpha(*arg)||*arg==(int)tag){
       err_prnt("begin name with letter or underscore");return 1;}}
@@ -389,11 +389,11 @@ txt_prnt(txt) char *txt;{char *strchr();
 outstr ?  (int) sprintf(strchr(outstr,'\0'),"%s",txt) :
    outfile ? fprintf(outfile,"%s",txt) : printf("%s",txt);}
 
-poswidth(num) int num;{int count = 1; while(num/=10) count++; return count;}
+int poswidth(num) int num;{int count = 1; while(num/=10) count++; return count;}
 
-numwidth(num) int num;{int count = 1; while(num/=radix) count++; return count;}
+int numwidth(num) int num;{int count = 1; while(num/=radix) count++; return count;}
 
-fctrlen(maxpos) int maxpos;{int count = 0, width = 1, order = 1;
+int fctrlen(maxpos) int maxpos;{int count = 0, width = 1, order = 1;
    while(order*10<maxpos) count += 9*width++*order,order *= 10;
    if(maxpos>order) count += (maxpos-order)*width; return count;}
 
@@ -658,7 +658,7 @@ if((*strs)->prevstr&&(*strs)->prevstr->str){
 }
 
 
-literal_asgn(strs)
+int literal_asgn(strs)
 STRS *strs;
 {
 return isnam(strs)&&strs->nextstr&&
@@ -753,7 +753,7 @@ while(rewind_strs&&strs->prevstr) strs = strs->prevstr;
 return strs;
 }
 
-pointrail(str)
+int pointrail(str)
 int *str;
 {
 int *ptadrs(), *strint();
@@ -791,6 +791,7 @@ if(sigdgt&&digits(strs->str)>sigdgt){
 void
 fixdgt(strs,sigdgt)
 STRS *strs;
+int sigdgt;
 {
 int *str = strs->str, *tmpc, *run, *lowone = (int*) 0, *ptadrs(), *fctadd(),
      *lftpad(), *clrstr(), *cstois(), *trim(), *add(), *cpystr();
@@ -818,7 +819,7 @@ if(*run){
    }
 }
 
-digits(str)
+int digits(str)
 int *str;
 {
 int count = 1, *run = str;
@@ -827,7 +828,7 @@ return count;
 }
 
 
-replnam(strs)
+int replnam(strs)
 STRS **strs;
 {
 STRS *tmps, *start, *insprevstrs();
@@ -851,7 +852,7 @@ delstrs(start->nextstr);
 return 1;
 }
 
-irreducible(strs,val)
+int irreducible(strs,val)
 STRS *strs;
 int *val;
 {
@@ -895,7 +896,7 @@ return 0;
 }
 
 
-unary(strs,sigdgt)
+int unary(strs,sigdgt)
 STRS **strs;
 int sigdgt;
 {
@@ -1029,7 +1030,7 @@ strs->shift = 0;
 }
 
 
-binary(strs)
+int binary(strs)
 STRS **strs;
 {
 if(trace_level==7){
@@ -1043,7 +1044,7 @@ return 0;
 }
 
 
-mixed(strs,sigdgt)
+int mixed(strs,sigdgt)
 STRS **strs;
 int sigdgt;
 {
@@ -1306,7 +1307,7 @@ switch(isopr(*strs->str)){
 return str;
 }
 
-dtordx(strs,sigdgt)
+int dtordx(strs,sigdgt)
 STRS *strs;
 int sigdgt;
 {
@@ -1342,7 +1343,7 @@ return 1;
 }
 
 
-cpyshft(strs)
+int cpyshft(strs)
 STRS *strs;
 {
 int tmpform, maxi = maxint;
@@ -1360,7 +1361,7 @@ return 1;
 }
 
 
-setform(strs,sigdgt)
+int setform(strs,sigdgt)
 STRS *strs;
 int sigdgt;
 {
@@ -1378,7 +1379,7 @@ return 0;
 }
 
 
-shiftable(strs,sigdgt)
+int shiftable(strs,sigdgt)
 STRS *strs;
 int sigdgt;
 {
@@ -1458,7 +1459,7 @@ return str;
 }
 
 
-fnctno(oprs,oprn)
+int fnctno(oprs,oprn)
 char *oprs, oprn;
 {
 int count = 0;
