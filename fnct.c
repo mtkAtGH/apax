@@ -192,7 +192,7 @@ term = correct(md[size->form][0](cpystr(term),term),sigdgt);
 while(count+=2){
    tmps = size->form ?
       mdi[size->form][1](cpystr(tmpt),count) :
-      mdi[size->form][1](cpystr(tmpt),count,strlen(tmpt)+sigdgt);
+      mdi[size->form][1](cpystr(tmpt),count,istrln(tmpt)+sigdgt);
    tmps = correct(tmps,sigdgt);
    answ = pm[size->form][0](cpystr(tmps),answ);
    if(insigdgts(tmps)>sigdgt) break;
@@ -221,7 +221,7 @@ if(!zero(frac)){
       tmps = size->form ? md[size->form][0](term,cpystr(frac),sigdgt) :
                            md[size->form][0](term,cpystr(frac));
       term = size->form ? mdi[size->form][1](tmps,count) :
-                     mdi[size->form][1](tmps,count,strlen(tmps)+sigdgt);
+                     mdi[size->form][1](tmps,count,istrln(tmps)+sigdgt);
       if(insigdgts(term)>sigdgt) break;
       sumf = pm[size->form][(sumsgn+=sign)%2](sumf,cpystr(term));
       term = correct(term,sigdgt);
@@ -261,7 +261,7 @@ return !sumi&&!sumf? cstois(ONE):!sumf? correct(sumi,sigdgt) : !sumi ?
    correct(md[size->form][sign](sumf,sumi),sigdgt);
 }
 
-insigdgts(term)
+int insigdgts(term)
 int *term;
 {
 int *ptadrs();
