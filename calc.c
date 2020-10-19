@@ -19,7 +19,7 @@ extern STRG *instrg;
 extern int *outstr;
 extern int sglprc, dblprc;
 
-main(narg,argv)
+int main(narg,argv)
 int narg;
 char *argv[];
 {
