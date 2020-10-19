@@ -12,79 +12,79 @@ void active_rule( int *option);
 
 int isopr(int c);
 
-isint( int c);
+int isint( int c);
 
-isprtarg( int c);
+int isprtarg( int c);
 
-isprtopr( int c);
+int isprtopr( int c);
 
-isopr( int c);
+int isopr( int c);
 
 void setopr( int *c);
 
-isopr_dm( int c);
+int isopr_dm( int c);
 
-isopr_d( int c);
+int isopr_d( int c);
 
-isopr_m( int c);
+int isopr_m( int c);
 
-isopr_as( int c);
+int isopr_as( int c);
 
-isopr_a( int c);
+int isopr_a( int c);
 
-isopr_s( int c);
+int isopr_s( int c);
 
-isfct( int c);
+int isfct( int c);
 
-isclx( int c);
+int isclx( int c);
 
-isasgn( int c);
+int isasgn( int c);
 
-isobj( int c);
+int isobj( int c);
 
-islft( int c);
+int islft( int c);
 
-isrgt( int c);
+int isrgt( int c);
 
-ishft( int c);
+int ishft( int c);
 
-isnorm( int c);
+int isnorm( int c);
 
-iscol( int c);
+int iscol( int c);
 
-isrow( int c);
+int isrow( int c);
 
-issep( int c);
+int issep( int c);
 
-istrps( int c);
+int istrps( int c);
 
-isdirs( int c);
+int isdirs( int c);
 
-isdirp( int c);
+int isdirp( int c);
 
-isbill( int c);
+int isbill( int c);
 
-isbilr( int c);
+int isbilr( int c);
 
-ismrk( int c); 
+int ismrk( int c); 
 
-isxpr( int c);
+int isxpr( int c);
 
-isnot( int c);
+int isnot( int c);
 
-diftyp( int new, int old);
+int diftyp( int new, int old);
 
-isnam( STRS *strs);
+int isnam( STRS *strs);
 
-isarg( STRS *strs);
+int isarg( STRS *strs);
 
-isfctl( int *str);
+int isfctl( int *str);
 
-isdcml( int *str);
+int isdcml( int *str);
 
-isnum( STRS *strs);
+int isnum( STRS *strs);
 
-illarg( STRS *strs);
+int illarg( STRS *strs);
 
 void str_prnt( STRS *strs);
 
@@ -131,7 +131,7 @@ void preparse(  int *error, STRS **strs, int *opts);
 
 void parse(  STRS **strs, int *opts);
 
-literal_asgn( STRS *strs);
+int literal_asgn( STRS *strs);
 
 STRS *reduce_oprn( STRS *strs, int sigdgt);
 
