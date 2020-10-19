@@ -1,4 +1,4 @@
- "@(#) Makefile 1.5 Makefile";
+# "@(#) Makefile 1.5 Makefile";
 CFLAGS =  -c -I.
 LDFLAGS =  -Bstatic
 CC = cc -pg
