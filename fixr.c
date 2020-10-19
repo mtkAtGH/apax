@@ -511,7 +511,7 @@ order = ((order=(int)(pt-hi))>0) ? --order : (order =(int) (hi-pt), -order);
 return order;
 }
 
-greater(str1,str2)
+int greater(str1,str2)
 int *str1, *str2;
 {
 int tlen, hlen;
@@ -532,10 +532,10 @@ if(tlen>0) while(tlen--) if(*ptr1++>'0') return 1;
 return 0;
 }
 
-equal(str1,str2) int *str1,*str2;{
+int equal(str1,str2) int *str1,*str2;{
 return !greater(str1,str2)&&!greater(str2,str1);}
 
-zero(num)
+int zero(num)
 int *num;
 {
 num--;
@@ -644,7 +644,7 @@ return (chridx) ? (int) (chridx - str) : -1;
 
 
 
-sumlen(str1,str2)
+int sumlen(str1,str2)
 int *str1, *str2;
 {
 return
@@ -685,7 +685,7 @@ else return num;
 }
 
 
-stor10i(str)         /* convert string to radix 10 integer  */
+int stor10i(str)         /* convert string to radix 10 integer  */
 int *str;              /* usage: integer = strtoi(str); */
 {
 int *run, *ptadrs();
@@ -819,20 +819,20 @@ return intgr;
 }
 
 
-min(int1,int2)
+int min(int1,int2)
 int int1, int2;
 {
 return (int1<=int2) ? int1 : int2;
 }
 
 
-max(int1,int2)
+int max(int1,int2)
 int int1, int2;
 {
 return (int1>=int2) ? int1 : int2;
 }
 
-iabs(num)
+int iabs(num)
 int num;
 {
 return (num<0) ? -num : num;
