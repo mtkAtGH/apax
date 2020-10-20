@@ -17,21 +17,21 @@ So this is not the 1989 vintage source because its been changed as above to let 
 
 APA(X) is a command line utility with a rudimentary text helper triggered by the '?'`<return>` character input
 
-For those that also want to actually read the code, it may be useful to know it follows C and UNIX customs as in:
+For those that also want to actually read the code, it may be useful to know it follows C and UNIX custom as in:
 
-(a) Using `int` strings in the same fashioun as C employs `char` strings (stdio.h); and 
+(a) Using `int` strings in the same fashion as C employs `char` strings (stdio.h); and 
 
 (b) Functions and Procedures always returning `int`, be they return status, a return count, a boolean result or a function integral return value
 
 (c) The extended arithmetic register is implemented as a doubly linked list of integers
 
-(d) The linked list is adapted to arithmetic expression stack tracers, variable names and historical values previously evaluated during a session.
+(d) The linked list is adapted to arithmetic expression stack tracers, variable names and historical values previously evaluated expressions in the session.
 
 (e) All register scans are unsorted linear search as only human input interaction was initially anticipated
 
-(f) File and String I/O is anticipated and supported via `libapa.a` API
+(f) File and String I/O is anticipated and supported via `libapa.a` expression streams API
 
-(g) Possible enhancement would be passing the integer string registers through a GPU for the actual arithmetic logic to support big computation
+(g) Possible enhancement would be passing the stream of integer register strings through a GPU for arithmetic logic operations to support big computation
 
 The utility supports any user chosen radix or precision, and also supports zero remainder division of rational numbers (`exact arithmetic`) A favourite demonstration is spitting out the Taylor Series value of the Transcendental `e` to the user's desired precision using the repeated fractions input of ones.
-To support arbitrary radix and repeated fractions: `The place values are always printed right-justified and zero-padded to the space required for the maximum register value.` for any given radix or precision that has been selected. It supports less than a handful of MATHS functions which are amenable to ARITHMETIC (power, square root), and does a bit of Collections housekeeping, following TENSOR analysis semantics (enclosing square brackets, with commas delimiting columns and semicolons delimiting rows - With EBCDIC, curly braces replace square brackets) and does Contraction as per Einstein's tensor notation.
+To support arbitrary radix and repeated fractions: `The place values are always printed right-justified and zero-padded to the space required for the maximum register value.` for any given radix or precision that has been selected. It supports less than a handful of MATHS functions which are amenable to ARITHMETIC (power, square root), and does a bit of Collections housekeeping, following TENSOR semantics (enclosing square brackets, with commas delimiting columns and semicolons delimiting rows - With EBCDIC, curly braces replace square brackets) and does contraction as per Einstein's tensor notation.
