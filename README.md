@@ -13,7 +13,7 @@ Using zero (0) in place of `NULL` where `int` type was needed, and returning `in
 
 It declares a maximal precision as 2^num_of_word_bits minus one, minus ASCII '0' (48). Values below ASCII '0' are used for housekeeping.
 
-So this is not the 1989 vintage source because its been changed as above to let gcc [version 8.3.1 20191121 (Red Hat 8.3.1-5)] compile successfully without warnings. The original `makefile` was identical to `apa.mak` and it has been change for the gcc archive creation rule action.
+So this is not the 1989 vintage source because its been changed as above to let gcc [version 8.3.1 20191121 (Red Hat 8.3.1-5)] compile successfully without warnings. The original `makefile` was identical to `apa.mak` and it has been changed for the gcc archive creation rule and `ar` action.
 
 APA(X) is a command line utility with a rudimentary text helper triggered by the '?'`<return>` character input
 
