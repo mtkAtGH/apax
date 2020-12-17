@@ -1,12 +1,18 @@
 # "@(#) Makefile 1.5 Makefile";
 CFLAGS =  -c -I.
 LDFLAGS =  -Bstatic
+CCSHARE_OPTS = $(CC) $(CFLAGS) -fPIC -rdynamic -shared
 CC = cc -pg
 AR = ar
 #CC = cc -g -DDBG_OBJT # to turn on object inspection on an object reference
 all:
+	make sob
 	make apa
 	make lib
+	
+sob: $(OBJS)
+	$(CCSHARE_OPTS) $(OBJS:.o=.c)
+	$(CC) $(SHARE_OPTS) $(OBJS) -o libapa.so 
 
 lib: apax.o cplx.o fctr.o fixr.o fnct.o help.o objx.o util.o
 	$(AR) cuv libapa.a  apax.o cplx.o fctr.o fixr.o fnct.o help.o \
